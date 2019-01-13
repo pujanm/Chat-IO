@@ -1,5 +1,5 @@
-# ChatIO
-An efficient multi user Chat WebApp built with Django, Web Sockets, and Channels 2.
+# Chat-IO
+An efficient multi-user Chat WebApp built with Django, Web Sockets, and Channels 2.
 
 ### Basic System Prerequisites:
 ```
@@ -16,3 +16,4 @@ pip3 install -r requirements.txt
 python3 manage.py migrate
 python3 manage.py runserver
 ```
+### NOTE: There are many pending tasks here, will list them out soon.
