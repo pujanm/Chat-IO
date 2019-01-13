@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Start Chat</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+</head>
+<body>
+  <ul class="nav nav-tabs bg-dark">
+    <li class="nav-item">
+      <a class="nav-link" href="/">ChatX</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link active" href="/chat/">Chat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout/">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="/signup/">Sign Up</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/login/">Login</a>
+    </li>
+    {% endif %}
+  </ul>
+  <div class="container">
+    <div class="jumbotron">
+      <a href="/chat/">Go Back</a>
+      <h3>Sender: {{ user }}</h3>
+      <form method="get">
+          {{ user_filtered.form.as_p }}
+          <button type="submit" class="btn btn-danger">Search User</button>
+          <p style="color:red">{{ no_user }}</p>
+      </form>
+      {% if user_filtered.qs %}
+      {% for i in user_filtered.qs %}
+      <form method="post">
+        {% csrf_token %}
+          {{ i.username }}
+          <input type="text" name="user" value="{{ i.username }}" hidden>
+          <button style="margin-left: 40px" type="submit" class="btn btn-danger">Start Conversation</button>
+          <hr>
+      </form>
+      {% endfor %}
+      {% else %}
+        <p style="color:red">No such user</p>
+      {% endif %}
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+  <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+</html>

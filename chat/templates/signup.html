@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Signup</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+</head>
+<body>
+
+  <ul class="nav nav-tabs bg-dark">
+    <li class="nav-item">
+      <a class="nav-link" href="/">ChatX</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="/chat/">Chat</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout/">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link active" href="/signup/">Sign Up</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/login/">Login</a>
+    </li>
+    {% endif %}
+  </ul>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Sign Up Form</h1>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="InputEmail1" class="bmd-label-floating">Email address</label>
+          <input type="email" class="form-control" id="InputEmail1" name="email">
+          <span class="bmd-help">We'll never share your email with anyone else.</span>
+        </div>
+        <div class="form-group">
+          <label for="InputUsername" class="bmd-label-floating">Username</label>
+          <input type="text" class="form-control" id="InputUsername" name="username">
+          <span class="bmd-help">It must be unique.</span>
+        </div>
+        <div class="form-group">
+          <label for="InputPassword1" class="bmd-label-floating">Password</label>
+          <input type="password" class="form-control" id="InputPassword1" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-raised">Submit</button>
+      </form>
+      <p style="color:red;">{{ error }}</p>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+  <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+</body>
+</html>
