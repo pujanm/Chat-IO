@@ -85,7 +85,6 @@
         var elem = document.getElementById("chat");
         elem.scrollTop = elem.scrollHeight;
 
-        // console.log(data['data']);
     };
 
     chatSocket.onclose = function(e) {
@@ -102,11 +101,15 @@
     document.querySelector('#chat-submit').onclick = function(e) {
         var messageInputDom = document.querySelector('#message');
         var message = messageInputDom.value;
-        chatSocket.send(JSON.stringify({
-            'message': message,
-            'sender': user1,
-            'receiver': user2
-        }));
+        var regEx = /<[^>]*/g;
+
+        if(!regEx.test(message)) {
+          chatSocket.send(JSON.stringify({
+              'message': message,
+              'sender': user1,
+              'receiver': user2
+          }));
+        }
 
         messageInputDom.value = '';
     };

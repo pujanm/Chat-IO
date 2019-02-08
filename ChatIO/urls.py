@@ -15,16 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from chat.views import (index, signup, list_chats, logIn,
-                       logOut, new_chatroom, conversation)
+from chat.views import (
+    index,
+    signup,
+    list_chats,
+    logIn,
+    logOut,
+    new_chatroom,
+    conversation,
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index, name="index"),
-    path('signup/', signup, name="signup"),
-    path('login/', logIn, name="login"),
-    path('logout/', logOut, name="logout"),
-    path('chat/', list_chats, name="chat"),
-    path('new_chatroom/', new_chatroom, name="new_chatroom"),
-    path('chat/<int:id>/', conversation, name="conversation"),
+    path("admin/", admin.site.urls),
+    path("", index, name="index"),
+    path("signup/", signup, name="signup"),
+    path("login/", logIn, name="login"),
+    path("logout/", logOut, name="logout"),
+    path("chat/", list_chats, name="chat"),
+    path("new_chatroom/", new_chatroom, name="new_chatroom"),
+    path("chat/<int:id>/", conversation, name="conversation"),
 ]
