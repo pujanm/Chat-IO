@@ -4,7 +4,6 @@ An efficient multi-user Chat WebApp built with Django, Web Sockets, and Channels
 #### Basic System Prerequisites:
 ```
 Python == 3.6
-pip >= 18.1
 virtualenv >= 16.0.0
 ```
 #### Redis Server Setup:
