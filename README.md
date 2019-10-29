@@ -11,7 +11,7 @@ virtualenv >= 16.0.0
 * For **Mac OS** follow this [link](https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298).
 * **Redis** does not support Windows officially.
 
-#### Fork this repo and run these commands after cloning the project and go inside the directory:
+#### Fork and clone this repo and run these commands inside the main directory:
 ```
 virtualenv venv
 source venv/bin/activate
