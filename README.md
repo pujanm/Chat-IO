@@ -22,16 +22,16 @@ An efficient multi-user Chat WebApp built with Django, Web Sockets, and Channels
   ```
 
 ### Optional Docker Setup 
-    ```
-    # This builds the Docker image.
-    docker build -t "pujanm/chat_app" .
+```
+# This builds the Docker image.
+docker build -t "pujanm/chat_app" .
 
-    # This will start the container.
-    docker run -itd --name chat_app_cont -p 8000:8000  pujanm/chat_app
+# This will start the container.
+docker run -itd --name chat_app_cont -p 8000:8000  pujanm/chat_app
 
-    # To stop and remove the container
-    docker stop chat_app_cont && docker rm chat_app_cont
-    ```
+# To stop and remove the container
+docker stop chat_app_cont && docker rm chat_app_cont
+```
 
 You can access the WebApp at [http://localhost:8000](http://localhost:8000)
 
