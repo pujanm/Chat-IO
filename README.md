@@ -35,8 +35,6 @@ An efficient multi-user Chat WebApp built with Django, Web Sockets, and Channels
 
 You can access the WebApp at [http://localhost:8000](http://localhost:8000)
 
-
-
 #### TODOs:
 - [ ] **Group Chat**
 - [ ] Finding which user is currently **typing**
