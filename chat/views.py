@@ -10,7 +10,8 @@ from .models import ChatRoom, Message
 
 
 def index(request):
-    return render(request, "index.html", {})
+    context = {}
+    return render(request, "index.html", context)
 
 
 def signup(request):
@@ -31,7 +32,8 @@ def signup(request):
                 "signup.html",
                 {"error": "Looks like username, email, and password already exists."},
             )
-    return render(request, "signup.html", {"error": ""})
+    context = {"error": ""}
+    return render(request, "signup.html", context)
 
 
 def logIn(request):
@@ -39,8 +41,9 @@ def logIn(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         user = authenticate(username=username, password=password)
+        invalid = {"error": "Invalid Username/Password"}
         if user == None:
-            return render(request, "login.html", {"error": "Invalid Username/Password"})
+            return render(request, "login.html", invalid)
         else:
             login(request, user)
             return HttpResponseRedirect("/chat/")
